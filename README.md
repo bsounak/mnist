@@ -17,3 +17,4 @@ $python
 (60000,)
 >>> mnist.preview()
 ```
+![image](https://imgur.com/dfe4Fsp.png)
