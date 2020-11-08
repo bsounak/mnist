@@ -1,9 +1,8 @@
 """mnist util functions"""
-import numpy as np
 import os
-import subprocess
 import urllib.request
 import gzip
+import numpy as np
 from matplotlib import pyplot as plt
 
 cache = os.path.join(os.path.expanduser("~"), ".mnist")
