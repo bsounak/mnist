@@ -15,6 +15,7 @@ def download():
     """
     Download mnist database
     """
+    print("downloading mnist at: {}".format(cache))
     urllib.request.urlretrieve(
         "http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz",
         os.path.join(cache, "train-images-idx3-ubyte.gz"),
@@ -31,6 +32,7 @@ def download():
         "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz",
         os.path.join(cache, "t10k-labels-idx1-ubyte.gz"),
     )
+    print("done!")
 
 
 def load():
@@ -78,7 +80,7 @@ def load():
     except FileNotFoundError as err:
         raise Exception(
             "mnist database seems to be missing. "
-            "make sure you have called mnist.download() first"
+            "make sure you have called mnist.download()"
         ) from err
 
     return training_set_image, training_set_label, test_set_image, test_set_label
