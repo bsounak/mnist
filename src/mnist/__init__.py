@@ -6,32 +6,41 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 cache = os.path.join(os.path.expanduser("~"), ".mnist")
-if not os.path.exists(cache):
-    os.makedirs(cache)
 
 
 def download():
     """
     Download mnist database
     """
-    print("downloading mnist at: {}".format(cache))
-    urllib.request.urlretrieve(
-        "http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz",
-        os.path.join(cache, "train-images-idx3-ubyte.gz"),
-    )
-    urllib.request.urlretrieve(
-        "http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz",
-        os.path.join(cache, "train-labels-idx1-ubyte.gz"),
-    )
-    urllib.request.urlretrieve(
-        "http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz",
-        os.path.join(cache, "t10k-images-idx3-ubyte.gz"),
-    )
-    urllib.request.urlretrieve(
-        "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz",
-        os.path.join(cache, "t10k-labels-idx1-ubyte.gz"),
-    )
-    print("done!")
+    if not os.path.exists(cache):
+        os.makedirs(cache)
+
+    if (
+        os.path.isfile(os.path.join(cache, "train-images-idx3-ubyte.gz"))
+        and os.path.isfile(os.path.join(cache, "train-labels-idx1-ubyte.gz"))
+        and os.path.isfile(os.path.join(cache, "t10k-images-idx3-ubyte.gz"))
+        and os.path.isfile(os.path.join(cache, "t10k-labels-idx1-ubyte.gz"))
+    ):
+        print("mnist data already exists at: {}".format(cache))
+    else:
+        print("downloading mnist at: {}".format(cache))
+        urllib.request.urlretrieve(
+            "http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz",
+            os.path.join(cache, "train-images-idx3-ubyte.gz"),
+        )
+        urllib.request.urlretrieve(
+            "http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz",
+            os.path.join(cache, "train-labels-idx1-ubyte.gz"),
+        )
+        urllib.request.urlretrieve(
+            "http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz",
+            os.path.join(cache, "t10k-images-idx3-ubyte.gz"),
+        )
+        urllib.request.urlretrieve(
+            "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz",
+            os.path.join(cache, "t10k-labels-idx1-ubyte.gz"),
+        )
+        print("done!")
 
 
 def load():
