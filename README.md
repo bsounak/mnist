@@ -1,3 +1,5 @@
+A helper module to load/download mnist data
+
 ## Installation
 ```console
 git clone https://github.com/bsounak/mnist.git
